@@ -26,16 +26,15 @@ const User = sequelize.define('user', {
     },
 });
 
-User.beforeCreate(async(user)=>{
-    const encriptedpassword = await bcrypt.hash(user.passsword, 10);
-    user.password = encriptedpassword;
-})
-User.prototype.toJSON = function(){
-    const values = Objects.assign({}, this.get());
+User.beforeCreate(async (user) => {
+    const encriptedPassword = await bcrypt.hash(user.password, 10);
+    user.password = encriptedPassword;
+  });
+  
+  User.prototype.toJSON = function () {
+    const values = Object.assign({}, this.get());
     delete values.password;
-    return values
-}
+    return values;
+  };
 
-
-
-module.exports = User
+module.exports = User;

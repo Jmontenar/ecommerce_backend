@@ -15,14 +15,7 @@ const purchaseCart = catchError(async(req, res) => {
         raw: true})
         await Purchase.bulkCreate(cart);
         await Cart.destroy({where:{userId:req.user.id}})
-    // cart.forEach(async product =>{
-    //     await Purchase.create({
-    //         quantity: product.quantity,
-    //         productId: product.productId,
-    //         userId: product.userId
-    //     })
-    // })
-    
+
     return res.json(cart)
 });
 

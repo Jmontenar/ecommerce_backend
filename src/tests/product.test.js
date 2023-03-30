@@ -43,7 +43,7 @@ test("POST /api/v1/product/:id/images should set the product images", async()=>{
     .post(`/api/v1/product/${productId}/images`)
     .send([image.id])
     .set('Authorization', `Bearer ${token}`);
-    await image.destroy()
+    await image.destroy();
     expect(res.status).toBe(200)
     expect(res.body).toHaveLength(1);
 
